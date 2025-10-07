@@ -16,7 +16,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
     const data = await response.json()
     return NextResponse.json(data)
   } catch (error) {
-    console.error("Error in GET /api/donations/[id]:", error)
+    console.error("Error in GET /donations/[id]:", error)
     return NextResponse.json({ error: "Failed to fetch donation" }, { status: 500 })
   }
 }
@@ -43,7 +43,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     const data = await response.json()
     return NextResponse.json(data)
   } catch (error) {
-    console.error("Error in PUT /api/donations/[id]:", error)
+    console.error("Error in PUT /donations/[id]:", error)
     return NextResponse.json({ error: "Failed to update donation" }, { status: 500 })
   }
 }
@@ -63,7 +63,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error("Error in DELETE /api/donations/[id]:", error)
+    console.error("Error in DELETE /donations/[id]:", error)
     return NextResponse.json({ error: "Failed to delete donation" }, { status: 500 })
   }
 }

@@ -28,7 +28,7 @@ export default function DonationInventoryPage() {
   const fetchDonations = async () => {
     try {
       setIsLoading(true)
-      const response = await fetch("/api/donations")
+      const response = await fetch("/donations")
       if (!response.ok) throw new Error("Failed to fetch donations")
       const data = await response.json()
       setDonations(data)
@@ -55,7 +55,7 @@ export default function DonationInventoryPage() {
     setDonations([optimisticDonation, ...donations])
 
     try {
-      const response = await fetch("/api/donations", {
+      const response = await fetch("/donations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(donation),
@@ -96,7 +96,7 @@ export default function DonationInventoryPage() {
     setEditingDonation(null)
 
     try {
-      const response = await fetch(`/api/donations/${id}`, {
+      const response = await fetch(`/donations/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(donation),
@@ -136,7 +136,7 @@ export default function DonationInventoryPage() {
     setDonations(donations.filter((d) => d.id !== id))
 
     try {
-      const response = await fetch(`/api/donations/${id}`, {
+      const response = await fetch(`/donations/${id}`, {
         method: "DELETE",
       })
 

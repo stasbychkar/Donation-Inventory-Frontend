@@ -13,7 +13,7 @@ export async function GET() {
     const data = await response.json()
     return NextResponse.json(data)
   } catch (error) {
-    console.error("Error in GET /api/donations:", error)
+    console.error("Error in GET /donations:", error)
     return NextResponse.json({ error: "Failed to fetch donations" }, { status: 500 })
   }
 }
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     const data = await response.json()
     return NextResponse.json(data)
   } catch (error) {
-    console.error("Error in POST /api/donations:", error)
+    console.error("Error in POST /donations:", error)
     return NextResponse.json({ error: "Failed to create donation" }, { status: 500 })
   }
 }
