@@ -14,6 +14,8 @@ export interface Donation {
   date: string
 }
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000"
+
 export default function DonationInventoryPage() {
   const [donations, setDonations] = useState<Donation[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -28,7 +30,7 @@ export default function DonationInventoryPage() {
   const fetchDonations = async () => {
     try {
       setIsLoading(true)
-      const response = await fetch("/donations")
+      const response = await fetch(`${API_BASE_URL}/donations`)
       if (!response.ok) throw new Error("Failed to fetch donations")
       const data = await response.json()
       setDonations(data)
@@ -55,7 +57,7 @@ export default function DonationInventoryPage() {
     setDonations([optimisticDonation, ...donations])
 
     try {
-      const response = await fetch("/donations", {
+      const response = await fetch(`${API_BASE_URL}/donations`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(donation),
@@ -96,7 +98,7 @@ export default function DonationInventoryPage() {
     setEditingDonation(null)
 
     try {
-      const response = await fetch(`/donations/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/donations/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(donation),
@@ -136,7 +138,7 @@ export default function DonationInventoryPage() {
     setDonations(donations.filter((d) => d.id !== id))
 
     try {
-      const response = await fetch(`/donations/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/donations/${id}`, {
         method: "DELETE",
       })
 
@@ -163,7 +165,6 @@ export default function DonationInventoryPage() {
   }
 
   const handleEdit = (donation: Donation) => {
-    console.log("[v0] handleEdit called with donation:", donation)
     setEditingDonation(donation)
   }
 
