@@ -15,4 +15,4 @@ npm run build
 npm start
 ```
 
-[Donation Inventory API repo]([https://www.genome.gov/](https://github.com/stasbychkar/Donation-Inventory-API))
+[Donation Inventory API repo](https://github.com/stasbychkar/Donation-Inventory-API)
